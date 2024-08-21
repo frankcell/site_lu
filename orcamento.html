@@ -41,16 +41,6 @@
 						<!-- orcamento -->
 							<article id="orcamento">
 
-								<!-- Cal floating-popup embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "h-comercial", {origin:"https://cal.com"});
-
-  Cal.ns["h-comercial"]("floatingButton", {"calLink":"lu-alvesmakeup","buttonText":"Agende agora","buttonColor":"#373737"});
-  Cal.ns["h-comercial"]("ui", {"styles":{"branding":{"brandColor":"#292929"}},"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-  <!-- Cal floating-popup embed code ends -->
-
 
 								<h2 class="major">Orçamento</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
@@ -73,13 +63,28 @@ Cal("init", "h-comercial", {origin:"https://cal.com"});
 								<br>R$ 40,00 com aplicação de Henna</p>
 
 								<p><b>Penteado</b>
-								<br>a partir de R$ 80,00</p>
+								<br>A partir de R$ 80,00</p>
 
 								<p>*  Para garantir sua reserva, solicitamos apenas 50% do valor do pacote escolhido no momento da marcação. O restante pode ser pago no dia da maquiagem.</p>
 
 
 								</ul>
-							<!-- Cal floating-popup embed code begins -->
+
+                            <!-- Cal inline embed code begins -->
+                                <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+                                <script type="text/javascript">
+                                  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                                Cal("init", "h-comercial", {origin:"https://cal.com"});
+
+                                  Cal.ns["h-comercial"]("inline", {
+                                    elementOrSelector:"#my-cal-inline",
+                                    calLink: "lu-alvesmakeup/h-comercial",
+                                    layout: "month_view"
+                                  });
+
+                                  Cal.ns["h-comercial"]("ui", {"styles":{"branding":{"brandColor":"#000000"}},"hideEventTypeDetails":false,"layout":"month_view"});
+                                  </script>
+                                  <!-- Cal inline embed code ends -->
 
 							</article>
 
@@ -96,44 +101,7 @@ Cal("init", "h-comercial", {origin:"https://cal.com"});
 								</ul>
 							</article>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
-							</article>
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
-
+					
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>
