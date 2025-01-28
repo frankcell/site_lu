@@ -45,8 +45,32 @@
 								import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 							
 								createChat({
-									webhookUrl: 'https://projeto01-n8n.blqjby.easypanel.host/webhook/7b438336-ce0a-4b08-9dbc-04a3cdd0b660/chat'
-								});
+									  webhookUrl: 'https://projeto01-n8n.blqjby.easypanel.host/webhook/7b438336-ce0a-4b08-9dbc-04a3cdd0b660/chat', // Insira a URL do webhook se necessário
+									  webhookConfig: {
+									    method: 'POST',
+									    headers: {}
+									  },
+									  target: '#n8n-chat',
+									  mode: 'window',
+									  chatInputKey: 'chatInput',
+									  chatSessionKey: 'sessionId',
+									  metadata: {},
+									  showWelcomeScreen: false,
+									  defaultLanguage: 'pt',
+									  initialMessages: [
+									    "Olá! Sou Luna, assistente da Maquiadora Luzinete. 😊",
+									    "Antes de começarmos, qual é o seu nome? E qual serviço você está buscando hoje? (maquiagem, penteado, pacote para noivas, etc.)"
+									  ],
+									  i18n: {
+									    pt: {
+									      title: 'Olá! 👋',
+									      subtitle: "Sou Luna, assistente da Luzinete. Como posso ajudar você hoje?",
+									      footer: '',
+									      getStarted: 'Nova Conversa',
+									      inputPlaceholder: 'Digite sua dúvida ou escolha um serviço...',
+									    },
+									  },
+									});
 							</script>
 
 				
