@@ -6,6 +6,136 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Melhorias mantendo o tema dark original */
+			.service-section {
+				margin-bottom: 2.5rem;
+				padding: 1.5rem;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 8px;
+				background: rgba(255, 255, 255, 0.05);
+			}
+			
+			.service-section h3 {
+				color: #9bf1ff;
+				border-bottom: 2px solid #9bf1ff;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+			}
+			
+			.service-item {
+				margin-bottom: 1rem;
+				padding: 0.8rem;
+				background: rgba(255, 255, 255, 0.03);
+				border-left: 4px solid #9bf1ff;
+				border-radius: 4px;
+			}
+			
+			.service-price {
+				font-weight: bold;
+				color: #ffffff;
+				font-size: 1.1rem;
+			}
+			
+			.service-note {
+				font-style: italic;
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 0.9rem;
+				margin-top: 0.3rem;
+			}
+			
+			.highlight-box {
+				background: linear-gradient(45deg, rgba(155, 241, 255, 0.2), rgba(255, 255, 255, 0.1));
+				border: 1px solid #9bf1ff;
+				color: #ffffff;
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin: 2rem 0;
+				text-align: center;
+			}
+			
+			.highlight-box h3 {
+				color: #9bf1ff;
+				margin-bottom: 1rem;
+			}
+			
+			.payment-info {
+				background: rgba(155, 241, 255, 0.1);
+				border: 1px solid #9bf1ff;
+				padding: 1rem;
+				border-radius: 6px;
+				margin: 1.5rem 0;
+				color: #ffffff;
+			}
+			
+			.payment-info h4 {
+				color: #9bf1ff;
+				margin-bottom: 0.5rem;
+			}
+			
+			.external-service {
+				background: rgba(46, 204, 113, 0.1);
+				border-color: #2ecc71;
+			}
+			
+			.external-service h3 {
+				color: #2ecc71;
+				border-bottom-color: #2ecc71;
+			}
+			
+			.external-service .service-item {
+				border-left-color: #2ecc71;
+			}
+			
+			.distance-info {
+				background: rgba(241, 196, 15, 0.15);
+				border: 1px solid #f1c40f;
+				padding: 1rem;
+				border-radius: 6px;
+				margin-top: 1rem;
+				color: #ffffff;
+			}
+			
+			.location-box {
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin-bottom: 1.5rem;
+			}
+			
+			.location-box h3, .location-box h4 {
+				color: #9bf1ff;
+				margin-bottom: 1rem;
+			}
+			
+			.reference-box {
+				background: rgba(155, 241, 255, 0.1);
+				border: 1px solid #9bf1ff;
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin-bottom: 2rem;
+			}
+			
+			.reference-box h4 {
+				color: #9bf1ff;
+				margin-bottom: 0.5rem;
+			}
+			
+			.comfort-box {
+				background: rgba(46, 204, 113, 0.1);
+				border: 1px solid #2ecc71;
+				padding: 1.5rem;
+				border-radius: 8px;
+				margin-top: 2rem;
+				text-align: center;
+			}
+			
+			.comfort-box h4 {
+				color: #2ecc71;
+				margin-bottom: 1rem;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -17,11 +147,12 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Lu Makeup</h1>
+								<p>Realce sua beleza natural com técnicas profissionais</p>
 							</div>
 						</div>
 						<nav>
 							<ul>
-								<li><a href="https://wa.me/5577991772799">WhatsApp</a></li>
+								<li><a href="https://wa.me/5577991772799">📱 WhatsApp</a></li>
 								<li><a href="#orcamento">Valores</a></li>
 								<li><a href="#localizacao">Localização</a></li>
 							</ul>
@@ -33,45 +164,87 @@
 
 						<!-- orcamento -->
 							<article id="orcamento">
-								<h2 class="major">Orçamento</h2>
+								<h2 class="major">Nossos Serviços e Valores</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>* EXCEÇÕES ESPECIAIS PARA NOIVAS: Nossos valores promocionais abaixo não se aplicam a noivas. Entendemos que o dia do seu casamento é único e merece um cuidado especializado com produtos de altíssima qualidade, por isso, oferecemos pacotes personalizados para atender às suas necessidades especiais.</p>
 								
-								<p><b>Maquiagem sem ou com cílios</b>
-								<br>R$ 150,00
-								<br>* Evite aplicar henna nas 48 horas que antecedem a maquiagem.
-								</p> 
+								<!-- Aviso Especial para Noivas -->
+								<div class="highlight-box">
+									<h3>⭐ EXCEÇÕES ESPECIAIS PARA NOIVAS</h3>
+									<p>Nossos valores promocionais abaixo não se aplicam a noivas. Entendemos que o dia do seu casamento é único e merece um cuidado especializado com produtos de altíssima qualidade, por isso, oferecemos pacotes personalizados para atender às suas necessidades especiais.</p>
+								</div>
+
+								<!-- Atendimento no Salão -->
+								<div class="service-section">
+									<h3>💄 Atendimento no Studio</h3>
 									
-								<p><b>Maquiagem e penteado</b>
-								<br>R$ 310,00
-								<br>* Incluso cílios + preparação.
-								</p>
+									<div class="service-item">
+										<div class="service-price">Maquiagem sem ou com cílios - R$ 150,00</div>
+										<div class="service-note">* Evite aplicar henna nas 48 horas que antecedem a maquiagem</div>
+									</div>
 
-								<p><b>Maquiagem e ondas</b>
-								<br>A partir de R$ 210,00
-								<br>* Babyliss.
-								</p>
+									<div class="service-item">
+										<div class="service-price">Maquiagem e penteado - R$ 310,00</div>
+										<div class="service-note">* Incluso cílios + preparação</div>
+									</div>
 
-								<p><b>Penteado</b>
-								<br>A partir de R$ 160,00
-								<br>* Incluso preparação.
-								</p>
+									<div class="service-item">
+										<div class="service-price">Maquiagem e ondas - A partir de R$ 210,00</div>
+										<div class="service-note">* Babyliss</div>
+									</div>
 
-								<p><b>Produção de daminhas e floristas</b>
-								<br>R$ 210,0
-								<br>* Até 12 anos
-								</p>
+									<div class="service-item">
+										<div class="service-price">Penteado - A partir de R$ 160,00</div>
+										<div class="service-note">* Incluso preparação</div>
+									</div>
 
-								<p><b>Designer de sobrancelhas</b>
-								<br>R$ 35,00 simples
-								<br>R$ 40,00 com aplicação de Henna
-								</p>
+									<div class="service-item">
+										<div class="service-price">Produção de daminhas e floristas - R$ 210,00</div>
+										<div class="service-note">* Até 12 anos</div>
+									</div>
 
-								<p>* Para garantir sua reserva, solicitamos apenas 50% do valor do pacote escolhido no momento da marcação. O restante pode ser pago no dia da maquiagem.</p>
+									<div class="service-item">
+										<div class="service-price">Designer de sobrancelhas simples - R$ 35,00</div>
+									</div>
 
-								<h3 class="major">Agendamento Online</h3>
+									<div class="service-item">
+										<div class="service-price">Designer de sobrancelhas com henna - R$ 40,00</div>
+									</div>
+								</div>
+
+								<!-- Atendimento Externo -->
+								<div class="service-section external-service">
+									<h3>🚗 Atendimento Externo</h3>
+									<p><strong>📍  A partir de 10km </strong></p>
+									
+									<div class="service-item">
+										<div class="service-price">Maquiagem sem ou com cílios - R$ 200,00</div>
+									</div>
+
+									<div class="service-item">
+										<div class="service-price">Penteado - R$ 180,00</div>
+										<div class="service-note">* Incluso preparação</div>
+									</div>
+
+									<div class="service-item">
+										<div class="service-price">Combo 3 maquiagens - R$ 180,00 cada</div>
+										<div class="service-note">* Desconto especial para grupos</div>
+									</div>
+
+									<div class="distance-info">
+										<strong>🚗 Taxa de deslocamento:</strong><br>
+										A partir de 10km: <strong>R$ 2,00 por km adicional</strong>
+									</div>
+								</div>
+
+								<!-- Informações de Pagamento -->
+								<div class="payment-info">
+									<h4>💳 Condições de Pagamento</h4>
+									<p>Para garantir sua reserva, solicitamos apenas <strong>50% do valor do pacote escolhido</strong> no momento da marcação. O restante pode ser pago no dia da maquiagem.</p>
+								</div>
+
+								<h3 class="major" id="agendamento">Agendamento Online</h3>
 								<!-- Cal inline embed code begins -->
-								<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+								<div style="width:100%;height:600px;overflow:scroll;border:1px solid rgba(255,255,255,0.2);border-radius:8px;" id="my-cal-inline"></div>
 								<script type="text/javascript">
 								  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 								Cal("init", "h-comercial", {origin:"https://cal.com"});
@@ -82,30 +255,45 @@
 								    calLink: "lu-alvesmakeup/h-comercial",
 								  });
 								
-								  Cal.ns["h-comercial"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"week_view"});
-								  </script>
-								  <!-- Cal inline embed code ends -->
+								  Cal.ns["h-comercial"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
+								</script>
+								<!-- Cal inline embed code ends -->
 							</article>
 
 						<!-- localizacao -->
 							<article id="localizacao">
 								<span class="image main"><img src="images/image10.jpg" alt="" /></span>
-								<h2 class="major">Endereço</h2>
-								<p>Rua Travessa Flamengo, SN
-								<br>Bairro Amaralina
-								<br>Bom Jesus da Lapa/BA
-								<br><i>Ref: Na Rua de Juarez comunicações, perto do Salão do Reino das Testemunhas de Jeová. Não temos placa. O portão é branco e tem vasos com plantas na frente.</i> </p>
+								<h2 class="major">📍 Nossa Localização</h2>
+								
+								<div class="location-box">
+									<h3>Endereço Completo:</h3>
+									<p><strong>Rua Travessa Flamengo, SN</strong><br>
+									Bairro Amaralina<br>
+									Bom Jesus da Lapa/BA</p>
+								</div>
+
+								<div class="reference-box">
+									<h4>🗺️ Como Chegar:</h4>
+									<p><em>Referência: Na Rua de Juarez comunicações, perto do Salão do Reino das Testemunhas de Jeová. Não temos placa. O portão é branco e tem vasos com plantas na frente.</em></p>
+								</div>
 
 								<ul class="actions">
-									<li><a href="https://goo.gl/maps/KFP9XKWJ7t3EynqT6" class="button">Abrir Localização</a></li>
+									<li><a href="https://goo.gl/maps/KFP9XKWJ7t3EynqT6" class="button primary">🗺️ Abrir no Google Maps</a></li>
+									<li><a href="https://wa.me/5577991772799" class="button">📱 Chamar no WhatsApp</a></li>
 								</ul>
+
+								<div class="comfort-box">
+									<h4>💫 Atendimento Personalizado</h4>
+									<p>Ambiente aconchegante e profissional para você se sentir especial em cada atendimento. Também oferecemos <strong>atendimento externo</strong> para sua comodidade!</p>
+								</div>
 							</article>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; 2025 Lu Makeup. Todos os direitos reservados. | 📱 WhatsApp: <a href="https://wa.me/5577991772799">(77) 99177-2799</a></p>
+						<p style="margin-top: 0.5rem; font-size: 0.9rem;">Design: <a href="https://html5up.net">HTML5 UP</a></p>
 					</footer>
 
 			</div>
