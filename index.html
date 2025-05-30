@@ -7,6 +7,90 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
+
+			.calculadora-container {
+			    background: rgba(255, 255, 255, 0.05);
+			    border: 1px solid rgba(255, 255, 255, 0.2);
+			    border-radius: 8px;
+			    padding: 1.5rem;
+			    margin: 2rem 0;
+			    text-align: center;
+			}
+			
+			.calculadora-container h4 {
+			    color: #9bf1ff;
+			    margin-bottom: 1rem;
+			}
+			
+			.calc-button {
+			    background: linear-gradient(45deg, #2ecc71, #27ae60);
+			    color: white;
+			    border: none;
+			    padding: 12px 24px;
+			    border-radius: 25px;
+			    font-size: 1rem;
+			    font-weight: bold;
+			    cursor: pointer;
+			    transition: all 0.3s ease;
+			    margin: 10px;
+			}
+			
+			.calc-button:hover {
+			    transform: translateY(-2px);
+			    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+			}
+			
+			.calc-button:disabled {
+			    background: #7f8c8d;
+			    cursor: not-allowed;
+			    transform: none;
+			}
+			
+			.resultado {
+			    background: rgba(46, 204, 113, 0.1);
+			    border: 1px solid #2ecc71;
+			    border-radius: 6px;
+			    padding: 1rem;
+			    margin-top: 1rem;
+			    color: white;
+			}
+			
+			.erro {
+			    background: rgba(231, 76, 60, 0.1);
+			    border: 1px solid #e74c3c;
+			    border-radius: 6px;
+			    padding: 1rem;
+			    margin-top: 1rem;
+			    color: #e74c3c;
+			}
+			
+			.loading {
+			    color: #f39c12;
+			    font-style: italic;
+			}
+			
+			.manual-calc {
+			    background: rgba(155, 241, 255, 0.1);
+			    border: 1px solid #9bf1ff;
+			    border-radius: 6px;
+			    padding: 1rem;
+			    margin-top: 1rem;
+			}
+			
+			.manual-calc input {
+			    background: rgba(255, 255, 255, 0.1);
+			    border: 1px solid rgba(255, 255, 255, 0.3);
+			    border-radius: 4px;
+			    padding: 8px 12px;
+			    color: white;
+			    width: 80px;
+			    text-align: center;
+			    margin: 0 10px;
+			}
+			
+			.manual-calc input::placeholder {
+			    color: rgba(255, 255, 255, 0.5);
+			}
 			/* Melhorias mantendo o tema dark original */
 			.service-section {
 				margin-bottom: 2.5rem;
@@ -234,6 +318,176 @@
 										<strong>🚗 Taxa de deslocamento:</strong><br>
 										A partir de 10km: <strong>R$ 2,00 por km adicional</strong>
 									</div>
+
+									<div class="calculadora-container">
+								<h4>🚗 Calculadora de Deslocamento</h4>
+								<p style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+									Descubra o valor do deslocamento para sua localização
+								</p>
+								
+								<button id="calcularBtn" class="calc-button" onclick="calcularDeslocamento()">
+									📍 Calcular com Minha Localização
+								</button>
+								
+								<div id="resultado" style="display: none;"></div>
+								
+								<div class="manual-calc">
+									<h5 style="color: #9bf1ff; margin-bottom: 1rem;">📏 Cálculo Manual</h5>
+									<p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">
+										Se preferir, informe a distância em km:
+									</p>
+									<input type="number" id="distanciaManual" placeholder="Ex: 15" min="0" max="100" step="0.1">
+									<button class="calc-button" onclick="calcularManual()" style="background: linear-gradient(45deg, #9bf1ff, #74b9ff);">
+										Calcular
+									</button>
+									<div id="resultadoManual"></div>
+								</div>
+							</div>
+
+							<script>
+							/// Coordenadas do salão Lu Makeup em Bom Jesus da Lapa/BA
+								const SALAO_LAT = -13.247265;
+								const SALAO_LNG = -43.406425;
+
+							// Função para calcular distância usando fórmula Haversine
+							function calcularDistancia(lat1, lng1, lat2, lng2) {
+								const R = 6371; // Raio da Terra em km
+								const dLat = (lat2 - lat1) * Math.PI / 180;
+								const dLng = (lng2 - lng1) * Math.PI / 180;
+								const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+										Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+										Math.sin(dLng/2) * Math.sin(dLng/2);
+								const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+								return R * c;
+							}
+
+							// Função para calcular o valor do deslocamento
+							function calcularValorDeslocamento(distanciaKm) {
+								const valor = distanciaKm * 2 * 2; // R$ 2,00 por km (ida e volta)
+								return {
+									distancia: distanciaKm,
+									valor: valor,
+									observacao: `Taxa: ${distanciaKm.toFixed(1)}km × R$ 4,00 (ida e volta) = R$ ${valor.toFixed(2)}`
+								};
+							}
+
+							// Função principal para calcular deslocamento com GPS
+							function calcularDeslocamento() {
+								const btn = document.getElementById('calcularBtn');
+								const resultado = document.getElementById('resultado');
+								
+								// Verifica se o navegador suporta geolocalização
+								if (!navigator.geolocation) {
+									mostrarErro('Seu navegador não suporta geolocalização.');
+									return;
+								}
+								
+								// Mostra loading
+								btn.disabled = true;
+								btn.innerHTML = '⏳ Obtendo localização...';
+								resultado.style.display = 'block';
+								resultado.className = 'loading';
+								resultado.innerHTML = 'Aguarde, obtendo sua localização...';
+								
+								// Opções para maior precisão
+								const options = {
+									enableHighAccuracy: true,
+									timeout: 10000,
+									maximumAge: 60000
+								};
+								
+								navigator.geolocation.getCurrentPosition(
+									function(position) {
+										const userLat = position.coords.latitude;
+										const userLng = position.coords.longitude;
+										
+										// Calcula a distância
+										const distancia = calcularDistancia(SALAO_LAT, SALAO_LNG, userLat, userLng);
+										const calculo = calcularValorDeslocamento(distancia);
+										
+										// Mostra o resultado
+										mostrarResultado(calculo);
+										
+										// Restaura o botão
+										btn.disabled = false;
+										btn.innerHTML = '📍 Calcular com Minha Localização';
+									},
+									function(error) {
+										let mensagem = '';
+										switch(error.code) {
+											case error.PERMISSION_DENIED:
+												mensagem = 'Permissão negada. Por favor, permita o acesso à localização.';
+												break;
+											case error.POSITION_UNAVAILABLE:
+												mensagem = 'Localização indisponível. Tente o cálculo manual.';
+												break;
+											case error.TIMEOUT:
+												mensagem = 'Tempo esgotado. Tente novamente ou use o cálculo manual.';
+												break;
+											default:
+												mensagem = 'Erro desconhecido. Tente o cálculo manual.';
+												break;
+										}
+										mostrarErro(mensagem);
+										
+										// Restaura o botão
+										btn.disabled = false;
+										btn.innerHTML = '📍 Calcular com Minha Localização';
+									},
+									options
+								);
+							}
+
+							// Função para cálculo manual
+							function calcularManual() {
+								const input = document.getElementById('distanciaManual');
+								const resultadoDiv = document.getElementById('resultadoManual');
+								
+								const distancia = parseFloat(input.value);
+								
+								if (isNaN(distancia) || distancia < 0) {
+									resultadoDiv.innerHTML = '<div class="erro">Por favor, informe uma distância válida.</div>';
+									return;
+								}
+								
+								const calculo = calcularValorDeslocamento(distancia);
+								
+								resultadoDiv.innerHTML = `
+									<div class="resultado">
+										<strong>📏 Distância:</strong> ${calculo.distancia.toFixed(1)} km<br>
+										<strong>💰 Taxa de Deslocamento:</strong> R$ ${calculo.valor.toFixed(2)}<br>
+										<small style="opacity: 0.8;">${calculo.observacao}</small>
+									</div>
+								`;
+							}
+
+							// Função para mostrar resultado
+							function mostrarResultado(calculo) {
+								const resultado = document.getElementById('resultado');
+								resultado.className = 'resultado';
+								resultado.innerHTML = `
+									<strong>📍 Sua Distância:</strong> ${calculo.distancia.toFixed(1)} km<br>
+									<strong>💰 Taxa de Deslocamento:</strong> R$ ${calculo.valor.toFixed(2)}<br>
+									<small style="opacity: 0.8;">${calculo.observacao}</small>
+									${calculo.valor > 0 ? '<br><br><small>📱 <a href="https://wa.me/5577991772799" style="color: #2ecc71;">Entre em contato para confirmar</a></small>' : ''}
+								`;
+							}
+
+							// Função para mostrar erro
+							function mostrarErro(mensagem) {
+								const resultado = document.getElementById('resultado');
+								resultado.style.display = 'block';
+								resultado.className = 'erro';
+								resultado.innerHTML = `❌ ${mensagem}`;
+							}
+
+							// Permite calcular ao pressionar Enter no campo manual
+							document.getElementById('distanciaManual').addEventListener('keypress', function(e) {
+								if (e.key === 'Enter') {
+									calcularManual();
+								}
+							});
+							</script>
 								</div>
 
 								<!-- Informações de Pagamento -->
